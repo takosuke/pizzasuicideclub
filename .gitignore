@@ -6,5 +6,5 @@
 #virtual environment, database, uploaded files
 flask_PSC
 db/*
-psc_app/static/uploads/*
+psc_app/static/uploads/
 tmp
