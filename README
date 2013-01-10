@@ -1,0 +1,15 @@
+A work in progress website for my art/music collective the Pizza Suicide Club. 
+
+It's done in Flask, following mitsuhiko's own examples as well as a number of tutorials out there, but mainly "The Flask Mega Tutorial" by Miguel Grinberg[1].
+It supports multiple users with different priviledges, and different pages where the posts go to. My goal is to make the posting experience as similar as possible as facebook's, with automatic rendering of rich content links and very minimal rich text editing possibilities.
+I use Flask's blueprints to make it more modular even if the site is tiny (I hate having too much stuff on the same file)
+
+I started learning Flask after doing a project in Django because, being a coding noob, I felt Django was doing too many things for me that I didn't understand, and that left me feeling unsatisfied and powerless. Flask is so minimal that you can really see how it all fits together, and then build up on it on your own. 
+
+The code here is a bit messy, borrowing from here and there and with a few un-pythonesque hacks stuck in wherever I didnt know any better. Commenting is a bit haphazard at the moment, too. It shouldn't be taken as a solid template to build upon, but you can take it as an example of how to build a slightly larger projects, since all the examples and skeletons I see out there are for smaller applications such as microblogging. 
+
+I use the extensions Flask-WTF, Flask-SqlAlchemy, micawber for oembed integration, BeautifulSoup and the Blueprint CSS framework.
+
+
+
+[1] http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
