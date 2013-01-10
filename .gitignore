@@ -1,0 +1,10 @@
+#python compiled files
+*.pyc
+#osx garbage
+*~
+.DS_Store
+#virtual environment, database, uploaded files
+flask_PSC
+db/*
+psc_app/static/uploads/*
+tmp
