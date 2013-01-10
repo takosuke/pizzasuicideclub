@@ -1,0 +1,9 @@
+- fix static files in blueprints issues 
+- cache the fuck out of it
+- create minimal admin cp
+- switch to postgres
+- deploying stuff: static files and nginx/uwsgi 
+- config file for easy switch between dev/production settings
+- make installer script
+- do something to change templates on the fly
+
