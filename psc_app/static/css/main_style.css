@@ -1,0 +1,39 @@
+.green {
+    background-color:green;
+    }
+.blue {
+    background-color:blue;
+    }
+.red {
+    background-color:red;
+    }
+.yellow {
+    background-color:yellow;
+    }
+.black {
+    background-color:black;
+    }
+    
+.white {
+    background-color:white;
+    }
+.harmony {
+    background-image:url(../images/uploads/06.jpg);
+    }
+    
+.nav li{
+    list-style-type:none;
+    }
+.content {
+        padding: 20px;
+    }
+
+#footer {
+        position:fixed;
+        bottom:0px;
+        height:20px;
+        width:100%;
+        background-color:white;
+    }
+
+

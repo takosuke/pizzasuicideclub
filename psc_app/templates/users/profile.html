@@ -1,0 +1,24 @@
+{% extends "psc_base.html" %}
+    {% block content %}
+    
+   <h1>{{ user.username }}</h1>
+   <br>
+    <div class="profilepic">
+        {% if user.profile_pic %}<img src="static/uploads/{{ user.profile_pic }}">{% endif %}
+    </div>
+    <br>
+    <div>
+        <p>
+            {{ user.description }}
+            <br>
+            {{ user.homepage }}
+            <br>
+            {{ user.getRole()}}
+            <br>
+            
+            {{ user.getZodiac() }}
+        </p>
+    </div>
+    {% endblock %}
+        
+        

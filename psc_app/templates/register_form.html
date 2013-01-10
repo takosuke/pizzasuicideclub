@@ -1,0 +1,40 @@
+{% extends "psc_base.html" %}
+    {% block content %}
+        <div class="loginform">
+            <h1>Tie to register Faggot</h1>
+            <form action="" method="post" name="login">
+                {{form.hidden_tag()}}
+                <p>
+                    Please create a login and password
+                    <br>
+                    Login:{{form.username(size=60)}}
+                    <br>
+                    {% for error in form.errors.username %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+                    Email:{{form.email(size=60)}}<br>
+                    {% for error in form.errors.email %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+
+                    Password:{{form.password(size=60)}}<br>
+                    {% for error in form.errors.password %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+                    Repeat Password:{{form.confirm}}<br>
+                    {% for error in form.errors.confirm %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+                    About you: {{form.description}}<br>
+                    {% for error in form.errors.description %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+                </p>
+                <p> 
+                    <input type="submit" value="Register">
+                </p>
+            </form>
+        </div>
+    {% endblock %}
+        
+        

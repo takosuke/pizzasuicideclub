@@ -8,3 +8,4 @@ flask_PSC
 db/*
 psc_app/static/uploads/*
 tmp
+

@@ -1,0 +1,30 @@
+{% extends "psc_base.html" %}
+    {% block content %}
+        <div class="loginform">
+            <h1>Sign In Faggot</h1>
+            <form action="" method="post" name="login">
+                {{form.hidden_tag()}}
+                <p>
+                    Please enter your login and password:
+                    <br>
+                    Login:{{form.username(size=60)}}
+                    <br>
+                    {% for error in form.errors.username %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+                    Password:{{form.password(size=60)}}<br>
+                    {% for error in form.errors.password %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+                </p>
+                <p>
+                    {{form.remember_me}} Remember me
+                </p>
+                <p> 
+                    <input type="submit" value="Sign In">
+                </p>
+            </form>
+        </div>
+    {% endblock %}
+        
+        

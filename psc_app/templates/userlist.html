@@ -1,0 +1,12 @@
+{% extends "psc_base.html" %}
+    {% block content %}
+        {% for user in users %}
+            {{ user.username }}
+            {{ user.description}}
+            {{ user.email }}
+            <br>
+        {% endfor %}
+
+    {% endblock %}
+        
+        

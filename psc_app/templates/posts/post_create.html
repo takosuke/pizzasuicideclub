@@ -1,0 +1,32 @@
+{% extends "psc_base.html" %}
+    {% block content %}
+        <div class="postform">
+            <h1>Write some shit Faggot</h1>
+            <form action="" method="POST" name="post" enctype=multipart/form-data>
+                {{form.hidden_tag()}}
+                <p>
+                    <br>
+                    Title:<br>
+                    {{form.title(size=70)}}
+                    <br>
+                    {% for error in form.errors.title %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+                    image: <input type=file name=file><br>
+                    Body:<br>
+                    {{form.body(size=500)}}<br>
+                    {% for error in form.errors.body %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+                    Category:{{form.category}}<br>
+
+                </p>
+
+                <p> 
+                    <input type="submit" value="Post!">
+                </p>
+            </form>
+        </div>
+    {% endblock %}
+        
+        

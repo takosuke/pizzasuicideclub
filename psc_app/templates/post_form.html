@@ -1,0 +1,28 @@
+{% extends "psc_base.html" %}
+    {% block content %}
+        <div class="postform">
+            <h1>Write some shit Faggot</h1>
+            <form action="" method="post" name="login">
+                {{form.hidden_tag()}}
+                <p>
+                    <br>
+                    Title:{{form.title(size=60)}}
+                    <br>
+                    {% for error in form.errors.title %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+                    Body:{{form.body(size=500)}}<br>
+                    {% for error in form.errors.body %}
+                    <span style="color: red;">[{{error}}]</span>
+                    {% endfor %}<br>
+                    Category:{{form.category}}
+                </p>
+
+                <p> 
+                    <input type="submit" value="Post!">
+                </p>
+            </form>
+        </div>
+    {% endblock %}
+        
+        
