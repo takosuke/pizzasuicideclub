@@ -1,0 +1,33 @@
+    {% extends "psc_base.html" %}
+        {% block content %}
+            {% for post in posts.items %}
+                <div class="post">
+                    <div class="title">
+                        <h2>
+                            <a href="{{ url_for('pages.permalink', postId = post.id) }}">{{ post.title }}</a>
+                        </h2>
+                        <p class="small">
+                            {{ post.datetime }}
+                        </p>
+                    </div>
+                    <div class="content">
+                        {% if post.image %}
+                        <img src="/static/uploads/{{ post.image}}"><br>
+                        {% endif %}
+                        {{ post.body|oembed(urlize_all=True,html=1, maxwidth=600)|nl2br }}
+                    </div>
+                    <div class="signature">
+                        posted by {{ post.author.username }} in {{ post.getCategory() }} the {{ post.timestamp.strftime('%Y-%m-%d') }} 
+                    </div>
+                </div>
+            {% endfor %}
+
+            {% if posts.has_prev %}
+                <a href="{{ url_for(current_page, page = posts.prev_num) }}">{{ posts.prev_num }}</a>
+            {% endif %} | 
+            {% if posts.has_next %}
+                <a href="{{ url_for(current_page, page = posts.next_num) }}">{{ posts.next_num }}</a>
+
+                {% endif %}
+        {% endblock %}
+

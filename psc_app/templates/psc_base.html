@@ -3,34 +3,40 @@
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <title>{{ title }}</title>
-        <link rel="stylesheet" href="static/css/blueprint/screen.css" type="text/css" media="screen, projection">
-        <link rel="stylesheet" href="static/css/blueprint/print.css" type="text/css" media="print"> 
-        <link rel="stylesheet" href="static/css/main_style.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/screen.css')}}" type="text/css" media="screen, projection">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/print.css')}}" type="text/css" media="print"> 
+        <link rel="stylesheet" href="{{url_for('static', filename='css/main_style.css')}}" type="text/css" media="screen">
         <!--[if lt IE 8]>
-            <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+            <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/ie.css')}}" type="text/css" media="screen, projection">
         <![endif]-->
+
+
+        
+
+        
     </head>
-    <body class="harmony">
+    <body class="green" >
         <div class="container ">
             <div class="span-24 white header">
                 <a href="{{ url_for('pages.index') }}">
-                    <img src="static/images/logo/pizzaLogo960px.png"></a>
-
+                    <img src="{{url_for('static', filename='images/logo/pizzaLogo960px.png')}}"></a>
+                    
             </div>
             
             <div class="span-4 border white nav">
                 <ul>
-                    <li><a href="/">home</a></li>
-                    <li><a href="/events">events</a></li>
+                    <li><a href="{{ url_for('pages.index') }}">home</a></li>
+                    <li><a href="{{ url_for('pages.events') }}">events</a></li>
                     <li><a href="{{ url_for('pages.releases') }}">releases</a></li>
-                    <li><a href="/posts/post">post some</li>
+                    <li><a href="{{ url_for('posts.create_post') }}">post some</li>
                     {% if user %}
-                    <li><a href="/users/logout">logout</a></li>
+                    <li><a href="{{ url_for('posts.manage_posts')}}">manage posts</a></li>
+                    <li><a href="{{ url_for('users.logout') }}">logout</a></li>
                     {% else %}
-                    <li><a href="/users/register">register</a></li>
-                    <li><a href="/users/login">login</a></li>
+                    <li><a href="{{ url_for('users.register') }}">register</a></li>
+                    <li><a href="{{ url_for('users.login') }}">login</a></li>
                     {% endif %} 
-                    <li><a href="/guests">guest page</a></li>
+                    <li><a href="{{ url_for('pages.guests') }}">guest page</a></li>
 
 
                 </ul>
@@ -49,6 +55,8 @@
                     {% endfor %}
                     {% endif %}
                     {% endwith %}
+
+
             </div>
         </div>
         
@@ -60,6 +68,8 @@
                     {% endfor %}
                     {% endif %}
                     {% endwith %}</div>
+
     </body>
 
 </html>
+

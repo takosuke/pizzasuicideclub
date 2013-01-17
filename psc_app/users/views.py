@@ -10,7 +10,7 @@ from config import STATIC
 from decorators import requires_login
 from forms  import RegistrationForm, LoginForm
 
-mod = Blueprint('users', __name__, static_folder = STATIC, url_prefix='/users')
+mod = Blueprint('users', __name__,  url_prefix='/users')
 
 @mod.route('/me')
 @requires_login

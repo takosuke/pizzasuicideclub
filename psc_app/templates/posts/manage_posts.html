@@ -1,0 +1,16 @@
+    {% extends "psc_base.html" %}
+        {% block content %}
+    
+                <div class="post">
+                <ul>
+            {% for post in posts %}
+                    <li>
+                            <a href="{{ url_for('pages.permalink', postId = post.id) }}">{{ post.title }}</a>{{ post.datetime }} in {{ post.getCategory() }} the {{ post.timestamp.strftime('%Y-%m-%d') }} | <a href="{{url_for('posts.delete', postId = post.id )}}">DELETE</a> | <a href="{{url_for('posts.modify', postId = post.id)}}">MODIFY</a>
+                    </li>
+            {% endfor %}
+                </div>
+
+
+
+        {% endblock %}
+

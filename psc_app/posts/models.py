@@ -9,6 +9,7 @@ class Post(psc_db.Model):
     user_id = psc_db.Column(psc_db.Integer, psc_db.ForeignKey('user.id'))
     body = psc_db.Column(psc_db.String())
     category = psc_db.Column(psc_db.SmallInteger, default = CATEGORY.NEWS)
+    front_page = psc_db.Column(psc_db.Boolean, default = False)
     
     
     def __repr__(self):
