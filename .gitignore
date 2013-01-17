@@ -5,7 +5,7 @@
 .DS_Store
 #virtual environment, database, uploaded files
 flask_PSC
-#flask_PSC
+flask_PSC_bak
 db/*
 psc_app/static/uploads/*
 tmp
