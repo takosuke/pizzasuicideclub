@@ -1,22 +1,47 @@
 {% extends "psc_base.html" %}
     {% block content %}
-    
-   <h1>{{ user.username }}</h1>
+    {% from "forms/macros.html" import render_field %}
+   <h1>{{ profile.username }}</h1>
    <br>
     <div class="profilepic">
-        {% if user.profile_pic %}<img src="static/uploads/{{ user.profile_pic }}">{% endif %}
+        {% if profile.profile_pic %}<img src="{{url_for('uploads', filename= profile.profile_pic)}}">{% endif %}
+        <br>{% if user %}
+                {% if user.id == profile.id or user.getRole() == 'admin' %}
+                    {% if profile.profile_pic %}
+                        CHANGE PIC
+                    {% else %}
+                        <h1>UPLOAD a PrOFilE -PIC</h1>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {{ render_field(form.image, class="file") }}
+        <br>
+        <br>
     </div>
     <br>
     <div>
         <p>
-            {{ user.description }}
+
+            {{ profile.description }}
             <br>
-            {{ user.homepage }}
-            <br>
-            {{ user.getRole()}}
+            {{ profile.homepage }}
             <br>
             
-            {{ user.getZodiac() }}
+            {{ profile.getRole()}}
+            <br>
+            {{ profile.getZodiac() }}
+            <br>
+            {% if user %}
+                {% if user.id == profile.id or user.getRole() == 'admin' %}
+            {% endif %}
+            {{ profile.email }}
+            <br>
+            <a href="{{ url_for('users.modify_profile', userId = profile.id)}}">modify profile
+            <br>
+            <a href="{{ url_for('users.modify_password', userId = profile.id)}}">change password
+            <br>
+            <a href="{{ url_for('users.delete_profile', userId = profile.id)}}">delete profile
+            {% endif %}
         </p>
     </div>
     {% endblock %}

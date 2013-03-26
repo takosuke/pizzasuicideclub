@@ -1,0 +1,23 @@
+{% extends "psc_base.html" %}
+    {% block content %}
+        {% from "forms/macros.html" import render_field %}
+        <div class="postform">
+            <h1>Update some zodiacs!</h1>
+            <form action="" method="POST" name="post" enctype=multipart/form-data>
+                <p>
+                    
+                    {{ form.csrf_token }}
+                    {{ render_field(form.body, class="input text") }}
+
+                    
+
+                </p>
+
+                <p> 
+                    <input type="submit" value="Post!">
+                </p>
+            </form>
+        </div>
+    {% endblock %}
+        
+        

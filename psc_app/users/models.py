@@ -1,5 +1,6 @@
 from psc_app import psc_db, app
 from psc_app.users import user_constants as USER
+from psc_app.zodiac import zodiac_constants as ZODIAC
 
 
 
@@ -30,9 +31,13 @@ class User(psc_db.Model):
     def getRole(self):
         return USER.ROLE[self.role]
         
-    def getZodiac(self):
-        return USER.ZODIAC[self.zodiac]
         
+    def getZodiac(self):
+        try:
+            return ZODIAC.ZODIAC[self.zodiac]
+        except KeyError:
+            return "no zodiac"
+            
     def __repr__(self):
         return '<User %r>' % (self.username)
         

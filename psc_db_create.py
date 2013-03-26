@@ -1,8 +1,8 @@
 #!flask_PSC/bin/python
 from migrate.versioning import api
-from config import SQLALCHEMY_DATABASE_URI
-from config import SQLALCHEMY_MIGRATE_REPO
-from psc_app import psc_db
+from psc_app import psc_db, app
+SQLALCHEMY_DATABASE_URI = app.config['SQLALCHEMY_DATABASE_URI']
+SQLALCHEMY_MIGRATE_REPO = app.config['SQLALCHEMY_MIGRATE_REPO']
 import os.path
 psc_db.create_all()
 if not os.path.exists(SQLALCHEMY_MIGRATE_REPO):

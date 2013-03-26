@@ -4,7 +4,7 @@
         <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
         <title>{{ title }}</title>
         <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/screen.css')}}" type="text/css" media="screen, projection">
-        <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/print.css')}}" type="text/css" media="print"> 
+        <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/print.css')}}" type="text/css" media="print">  
         <link rel="stylesheet" href="{{url_for('static', filename='css/main_style.css')}}" type="text/css" media="screen">
         <!--[if lt IE 8]>
             <link rel="stylesheet" href="{{url_for('static', filename='css/blueprint/ie.css')}}" type="text/css" media="screen, projection">
@@ -15,34 +15,16 @@
 
         
     </head>
-    <body class="green" >
+    <body class="mainbody" style="background-image:url({{url_for('static', filename='images/bg/under_construction/cons33.gif')}})" >
         <div class="container ">
             <div class="span-24 white header">
                 <a href="{{ url_for('pages.index') }}">
                     <img src="{{url_for('static', filename='images/logo/pizzaLogo960px.png')}}"></a>
                     
             </div>
+                {% include "nav.html" %}
             
-            <div class="span-4 border white nav">
-                <ul>
-                    <li><a href="{{ url_for('pages.index') }}">home</a></li>
-                    <li><a href="{{ url_for('pages.events') }}">events</a></li>
-                    <li><a href="{{ url_for('pages.releases') }}">releases</a></li>
-                    <li><a href="{{ url_for('posts.create_post') }}">post some</li>
-                    {% if user %}
-                    <li><a href="{{ url_for('posts.manage_posts')}}">manage posts</a></li>
-                    <li><a href="{{ url_for('users.logout') }}">logout</a></li>
-                    {% else %}
-                    <li><a href="{{ url_for('users.register') }}">register</a></li>
-                    <li><a href="{{ url_for('users.login') }}">login</a></li>
-                    {% endif %} 
-                    <li><a href="{{ url_for('pages.guests') }}">guest page</a></li>
 
-
-                </ul>
-                
-                
-            </div>
             <div class="span-12  white content">
 
         {% block content %}
@@ -58,6 +40,11 @@
 
 
             </div>
+        <div class="span-6">
+            {% block headlines %}
+            
+            {% endblock %}
+        </div>
         </div>
         
         <div id="footer">{% if user %}{{ user.username }}{% endif %}                    

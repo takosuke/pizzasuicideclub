@@ -1,5 +1,17 @@
     {% extends "psc_base.html" %}
+        {% if headlines %}
+            {% block headlines %}
+                <div class="headlines">
+                <h2>BREAKING NEWS</h2>
+                {% for headline in headlines %}
+                    <a href="{{ url_for('pages.permalink', postId = headline.id )}}">{{ headline.title }}</a><br>
+                {% endfor %}
+                </div>
+            {% endblock %}
+        {% endif %}
+             
         {% block content %}
+        
             {% for post in posts.items %}
                 <div class="post">
                     <div class="title">
@@ -12,7 +24,7 @@
                     </div>
                     <div class="content">
                         {% if post.image %}
-                        <img src="/static/uploads/{{ post.image}}"><br>
+                        <img src="{{url_for('uploads', filename= post.image)}}"><br>
                         {% endif %}
                         {{ post.body|oembed(urlize_all=True,html=1, maxwidth=600)|nl2br }}
                     </div>

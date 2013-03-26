@@ -1,15 +1,18 @@
 from flask import Flask, safe_join, request
 from werkzeug import secure_filename
 import os, datetime, random
+from psc_app import app
 
-from config import STATIC, ALLOWED_EXTENSIONS, UPLOAD_FOLDER
+STATIC = app.config['STATIC']
+ALLOWED_EXTENSIONS = app.config['ALLOWED_EXTENSIONS']
+UPLOAD_FOLDER = app.config['UPLOAD_FOLDER']
+
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-def file_save(category):
-    file = request.files['file']
+def file_save(file, category):
     if file and allowed_file(file.filename):
         extension = secure_filename(file.filename).rsplit('.', 1)[1]
         foldername = safe_join (category, datetime.date.today().strftime('%Y%m'))
@@ -25,5 +28,4 @@ def file_save(category):
         file.save(full_save_path)
         return image_rel_path
     return None
-
 

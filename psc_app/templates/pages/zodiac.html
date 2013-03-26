@@ -1,0 +1,31 @@
+    {% extends "psc_base.html" %}
+             
+        {% block content %}
+
+            {% macro zodiac(sign_name, sign_number, date,image, body) %}
+                <a href='{{ url_for('zodiac.update_zodiac', sign =  sign_number  )}}'>{{sign_name}}</a><br>
+                {{ date }}<br>
+                <img src={{url_for('static', filename=image )}}>
+                <br>
+                <p>{% if body %}{{ body }}{% endif %}</p>
+                {% for user in users if user.zodiac == sign_number %}{{ user.username }}{% endfor %} are {{ sign_name }}
+
+            {% endmacro %}
+            
+            
+            <div class="span-4">
+                {{ zodiac('Aries', '0',"March 21 - April 20", "images/zodiac/aries.jpg", zodiacs[0].body )}}
+                {% for user in users if user.zodiac == 0 %}{{ user.username }} {% endfor %}are all Aries
+            </div>
+
+            <div class="span-4">
+                {{ zodiac('Taurus', '1',"March 21 - April 20", "images/zodiac/aries.jpg", zodiacs[1].body )}}
+                {% for user in users if user.zodiac == 0 %}{{ user.username }} {% endfor %}are all Aries
+            </div>
+
+        
+
+
+            
+        {% endblock %}
+

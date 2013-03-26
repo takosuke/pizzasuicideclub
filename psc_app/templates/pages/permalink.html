@@ -12,7 +12,7 @@
                     </div>
                     <div class="content">
                         {% if post.image %}
-                        <img src="/static/uploads/{{ post.image}}"><br>
+                        <img src="{{url_for('uploads', filename= post.image)}}"><br>
                         {% endif %}
                         {{ post.body|oembed(urlize_all=True,html=1, maxwidth=600)|nl2br }}
                     </div>

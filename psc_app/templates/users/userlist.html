@@ -1,0 +1,28 @@
+{% extends "psc_base.html" %}
+    {% block content %}
+        {% for u in users %}
+            <div class="span-8"><h3><a href="{{url_for('users.profile', userId = u.id)}}">{{ u.username }}</a></h3>
+            <a href="{{ u.homepage}}">{{ u.homepage}}</a>
+            {{ u.getZodiac() }}
+            {% if user %}
+                {% if user.id == u.id or user.getRole() == 'admin' %}
+                <br>
+                <a href="{{ url_for('users.modify_profile', userId = u.id)}}">modify profile
+                <br>
+                <a href="{{ url_for('users.modify_password', userId = u.id)}}">change password
+                <br>
+                <a href="{{ url_for('users.delete_profile', userId = u.id)}}">delete profile
+                {% endif %}
+            {% endif %}
+            </div>
+            {% if u.profile_pic %}
+                <div class="span-2">
+                    <img src="{{url_for('uploads', filename=u.profile_pic)}}" height="100px" >
+                </div>{% endif %}
+            <br>
+            <hr>
+        {% endfor %}
+
+    {% endblock %}
+        
+        

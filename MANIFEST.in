@@ -1,0 +1,2 @@
+recursive-include psc_app/templates *
+recursive-include psc_app/static *
